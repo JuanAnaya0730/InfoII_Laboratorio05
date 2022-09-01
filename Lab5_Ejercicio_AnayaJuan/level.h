@@ -4,11 +4,15 @@
 #include <QObject>
 #include <QGraphicsScene>
 #include <QString>
+#include <QList>
+#include "wall.h"
 
 class Level : public QGraphicsScene
 {
     Q_OBJECT
 private:
+    QList<Wall *> maze;
+
     void loadLevel(const QString &filename);
 
 public:
