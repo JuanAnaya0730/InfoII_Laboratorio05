@@ -3,15 +3,16 @@
 
 #include <QObject>
 #include <QGraphicsScene>
+#include <QString>
 
 class Level : public QGraphicsScene
 {
     Q_OBJECT
+private:
+    void loadLevel(const QString &filename);
+
 public:
-    explicit Level(QObject *parent = nullptr);
-
-signals:
-
+    explicit Level(const QString &fileName, QObject *parent = nullptr);
 };
 
 #endif // LEVEL_H
