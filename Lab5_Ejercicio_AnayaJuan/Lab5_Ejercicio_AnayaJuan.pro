@@ -10,10 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     gamewindow.cpp \
+    level.cpp \
     main.cpp
 
 HEADERS += \
-    gamewindow.h
+    gamewindow.h \
+    level.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
