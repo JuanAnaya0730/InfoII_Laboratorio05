@@ -13,7 +13,7 @@ private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 
 public:
-    Wall();
+    Wall(const int &x, const int &y);
 };
 
 #endif // WALL_H
