@@ -2,8 +2,9 @@
 #define LEVEL_H
 
 #include <QObject>
+#include <QGraphicsScene>
 
-class Level : public QObject
+class Level : public QGraphicsScene
 {
     Q_OBJECT
 public:
