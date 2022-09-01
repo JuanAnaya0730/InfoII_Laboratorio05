@@ -13,7 +13,7 @@ private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 
 public:
-    Pill();
+    Pill(const int &x, const int &y);
 };
 
 #endif // PILL_H
