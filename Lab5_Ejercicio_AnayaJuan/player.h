@@ -2,8 +2,9 @@
 #define PLAYER_H
 
 #include <QObject>
-#include <QGraphicsRectItem>
 #include <QGraphicsItem>
+#include <QGraphicsRectItem>
+#include <QPixmap>
 #include <QPainter>
 #include "wall.h"
 
@@ -12,7 +13,7 @@
 
 enum class Direction{None, Up, Down, Left, Right}; // Direccion en la que se movera el personaje
 
-class Player : public QObject, public QGraphicsItem
+class Player : public QObject
 {
     Q_OBJECT
 private:
@@ -25,6 +26,7 @@ private:
     int currentFrame;
 
     void updatePos();
+    void changeSprite();
 
 public:
     explicit Player(const int &x, const int &y, Direction d = Direction::None, QObject *parent = nullptr);
@@ -37,11 +39,6 @@ public:
     void setDirection(Direction newDirection);
     void move();
     void moveBack();
-
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
-
-    void nextFrame();
 };
 
 #endif // PLAYER_H

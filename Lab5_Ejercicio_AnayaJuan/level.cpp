@@ -18,6 +18,7 @@ Level::Level(const QString &fileName, QObject *parent) :
     for(int i=0; i < maze.size(); ++i){ this->addItem(maze[i]); }
     for(int i=0; i < food.size(); ++i){ this->addItem(food[i]); }
     this->addItem(pacman->getContainer());
+    //this->addItem(pacman);
 
     connect(autoMove, &QTimer::timeout, this, &Level::movePlayer);
     autoMove->start(40);
@@ -70,7 +71,6 @@ void Level::movePlayer()
     for(int i=0; i < maze.size(); ++i){
         if(pacman->collidingWithWall(maze[i])){
             pacman->moveBack();
-            qDebug() << static_cast<int>(pacman->getDirection());
             break;
         }
     }
