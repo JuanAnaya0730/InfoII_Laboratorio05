@@ -15,7 +15,7 @@ class Level : public QGraphicsScene
 private:
     Player *pacman;
     QList<Wall *> maze;
-    QList<Pill *> food;    
+    QList<Pill *> food;
 
     void loadLevel(const QString &fileName);
 
