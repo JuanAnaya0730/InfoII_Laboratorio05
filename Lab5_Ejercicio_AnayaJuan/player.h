@@ -10,10 +10,12 @@ class Player : public QObject
 {
     Q_OBJECT
 private:
+    int posX;
+    int posY;
     QGraphicsRectItem *container;
 
 public:
-    explicit Player(QObject *parent = nullptr);
+    explicit Player(const int &x, const int &y, QObject *parent = nullptr);
 
     QGraphicsRectItem *getContainer() const;
 
