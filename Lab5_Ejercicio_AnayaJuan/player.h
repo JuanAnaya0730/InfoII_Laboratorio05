@@ -26,6 +26,7 @@ public:
     QGraphicsRectItem *getContainer() const;
     void setDirection(Direction newDirection);
     void move();
+    void moveBack();
 
 signals:
 
