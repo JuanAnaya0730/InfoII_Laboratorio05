@@ -6,6 +6,8 @@
 
 #define WH_PLAYER 16 // Ancho y alto para el contorno del personaje
 
+enum Direction{None, Up, Down, Left, Right}; // Direccion en la que se movera el personaje
+
 class Player : public QObject
 {
     Q_OBJECT
