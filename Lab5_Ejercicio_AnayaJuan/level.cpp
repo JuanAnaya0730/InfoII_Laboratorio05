@@ -9,11 +9,16 @@ Level::Level(const QString &fileName, QObject *parent) :
     this->setSceneRect(0, 0, WH_WALL*29, WH_WALL*32);
     this->loadLevel(fileName);
 
-    pacman = new Player(WH_WALL*14, WH_WALL*17, Direction::Left);
+    /* Aqui se inicializan los atributos */
+    pacman = new Player(WH_WALL*14, WH_WALL*17);
+    dir = Direction::Left;
 
+    /* Aqui se añaden los muros pacman y las pildora a la escena */
     for(int i=0; i < maze.size(); ++i){ this->addItem(maze[i]); }
     for(int i=0; i < food.size(); ++i){ this->addItem(food[i]); }
     this->addItem(pacman->getContainer());
+
+    pacman->setDirection(dir);
 }
 
 void Level::loadLevel(const QString &fileName)

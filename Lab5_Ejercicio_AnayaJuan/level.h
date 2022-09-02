@@ -17,6 +17,8 @@ private:
     QList<Wall *> maze;
     QList<Pill *> food;
 
+    Direction dir;
+
     void loadLevel(const QString &fileName);
 
 public:
