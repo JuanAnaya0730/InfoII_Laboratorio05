@@ -17,6 +17,11 @@ QGraphicsRectItem *Player::getContainer() const
     return container;
 }
 
+bool Player::collidingWithWall(const Wall *wall)
+{
+    return container->collidesWithItem(wall);
+}
+
 void Player::setDirection(Direction newDirection)
 {
     direction = newDirection;

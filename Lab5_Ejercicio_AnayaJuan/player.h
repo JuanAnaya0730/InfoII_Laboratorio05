@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QGraphicsRectItem>
+#include "wall.h"
 
 #define WH_PLAYER 16 // Ancho y alto para el contorno del personaje
 #define VEL 1
@@ -24,6 +25,7 @@ public:
     explicit Player(const int &x, const int &y, Direction d = Direction::None, QObject *parent = nullptr);
 
     QGraphicsRectItem *getContainer() const;
+    bool collidingWithWall(const Wall *wall);
     void setDirection(Direction newDirection);
     void move();
     void moveBack();
