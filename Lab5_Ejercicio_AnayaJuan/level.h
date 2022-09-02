@@ -7,13 +7,15 @@
 #include <QList>
 #include "wall.h"
 #include "pill.h"
+#include "player.h"
 
 class Level : public QGraphicsScene
 {
     Q_OBJECT
 private:
+    Player *pacman;
     QList<Wall *> maze;
-    QList<Pill *> food;
+    QList<Pill *> food;    
 
     void loadLevel(const QString &fileName);
 

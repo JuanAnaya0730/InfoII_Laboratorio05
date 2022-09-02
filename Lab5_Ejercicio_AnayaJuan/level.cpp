@@ -9,8 +9,11 @@ Level::Level(const QString &fileName, QObject *parent) :
     this->setSceneRect(0, 0, WH_WALL*29, WH_WALL*32);
     this->loadLevel(fileName);
 
+    pacman = new Player(WH_WALL*14, WH_WALL*17);
+
     for(int i=0; i < maze.size(); ++i){ this->addItem(maze[i]); }
     for(int i=0; i < food.size(); ++i){ this->addItem(food[i]); }
+    this->addItem(pacman->getContainer());
 }
 
 void Level::loadLevel(const QString &fileName)
