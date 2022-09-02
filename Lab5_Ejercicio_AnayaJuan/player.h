@@ -24,14 +24,14 @@ private:
 public:
     explicit Player(const int &x, const int &y, Direction d = Direction::None, QObject *parent = nullptr);
 
+    int getPosX() const;
+    int getPosY() const;
+    Direction getDirection() const;
     QGraphicsRectItem *getContainer() const;
     bool collidingWithWall(const Wall *wall);
     void setDirection(Direction newDirection);
     void move();
     void moveBack();
-
-signals:
-
 };
 
 #endif // PLAYER_H

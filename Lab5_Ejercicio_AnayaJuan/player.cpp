@@ -7,6 +7,21 @@ Player::Player(const int &x, const int &y, Direction d, QObject *parent)
     container->setPos(posX, posY);
 }
 
+int Player::getPosX() const
+{
+    return posX;
+}
+
+int Player::getPosY() const
+{
+    return posY;
+}
+
+Direction Player::getDirection() const
+{
+    return direction;
+}
+
 void Player::updatePos()
 {
     container->setPos(posX, posY);
