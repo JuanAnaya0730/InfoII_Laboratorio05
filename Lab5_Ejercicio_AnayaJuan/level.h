@@ -22,6 +22,7 @@ private:
     Direction futureDirection;
 
     void loadLevel(const QString &fileName);
+    bool canPlayerChangeDirection();
 
 public:
     explicit Level(const QString &fileName, QObject *parent = nullptr);
