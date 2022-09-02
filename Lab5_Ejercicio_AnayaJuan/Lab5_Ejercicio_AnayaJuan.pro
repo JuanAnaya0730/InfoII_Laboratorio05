@@ -13,12 +13,14 @@ SOURCES += \
     level.cpp \
     main.cpp \
     pill.cpp \
+    player.cpp \
     wall.cpp
 
 HEADERS += \
     gamewindow.h \
     level.h \
     pill.h \
+    player.h \
     wall.h
 
 # Default rules for deployment.
