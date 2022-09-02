@@ -4,7 +4,7 @@ Player::Player(const int &x, const int &y, Direction d, QObject *parent)
     : QObject{parent}, posX(x), posY(y), direction(d)
 {
     container = new QGraphicsRectItem(0, 0, WH_PLAYER-1, WH_PLAYER-1);
-    container->setPos(posX, posY);
+    this->updatePos();
 }
 
 int Player::getPosX() const
@@ -59,5 +59,6 @@ void Player::moveBack()
     else if(direction == Direction::Left){ posX += VEL; }
     else if(direction == Direction::Right){ posX -= VEL; }
 
+    direction = Direction::None;
     this->updatePos();
 }
