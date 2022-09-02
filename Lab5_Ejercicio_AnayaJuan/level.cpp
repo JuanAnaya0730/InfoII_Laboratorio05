@@ -20,6 +20,7 @@ Level::Level(const QString &fileName, QObject *parent) :
     this->addItem(pacman->getContainer());
 
     connect(autoMove, &QTimer::timeout, this, &Level::movePlayer);
+    autoMove->start(40);
 }
 
 void Level::loadLevel(const QString &fileName)
@@ -44,20 +45,32 @@ void Level::loadLevel(const QString &fileName)
     }
 }
 
+bool Level::canPlayerChangeDirection()
+{
+    Player temp(pacman->getPosX(), pacman->getPosY(), futureDirection);
+    temp.move();
+    for(int i=0; i < maze.size(); ++i){
+        if(temp.collidingWithWall(maze[i])){ return false; }
+    }
+    return true;
+}
+
 void Level::setPlayerDirection(Direction newDirection)
 {
     futureDirection = newDirection;
-    pacman->setDirection(futureDirection);
-    autoMove->start(50);
 }
 
 void Level::movePlayer()
 {
     pacman->move();
+    if(futureDirection != pacman->getDirection() && canPlayerChangeDirection()){
+        pacman->setDirection(futureDirection);
+    }
+
     for(int i=0; i < maze.size(); ++i){
         if(pacman->collidingWithWall(maze[i])){
             pacman->moveBack();
-            autoMove->stop();
+            qDebug() << static_cast<int>(pacman->getDirection());
             break;
         }
     }
