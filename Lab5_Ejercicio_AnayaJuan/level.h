@@ -13,7 +13,7 @@ class Level : public QGraphicsScene
 private:
     QList<Wall *> maze;
 
-    void loadLevel(const QString &filename);
+    void loadLevel(const QString &fileName);
 
 public:
     explicit Level(const QString &fileName, QObject *parent = nullptr);
