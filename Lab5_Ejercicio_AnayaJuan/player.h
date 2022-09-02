@@ -21,6 +21,9 @@ private:
     Direction direction;
     QGraphicsRectItem *container;
 
+    QPixmap *sprite;
+    int currentFrame;
+
     void updatePos();
 
 public:
@@ -37,6 +40,8 @@ public:
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+
+    void nextFrame();
 };
 
 #endif // PLAYER_H
