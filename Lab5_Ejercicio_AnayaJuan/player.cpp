@@ -4,6 +4,7 @@ Player::Player(const int &x, const int &y, Direction d, QObject *parent)
     : QObject{parent}, posX(x), posY(y), direction(d)
 {
     container = new QGraphicsRectItem(0, 0, WH_PLAYER-1, WH_PLAYER-1);
+
     this->updatePos();
 }
 
@@ -61,4 +62,21 @@ void Player::moveBack()
 
     direction = Direction::None;
     this->updatePos();
+}
+
+QRectF Player::boundingRect() const
+{
+    return QRectF(-0.5, -0.5, WH_PLAYER, WH_PLAYER);
+}
+
+void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    painter->drawPixmap(0, 0, *sprite, currentFrame, 0, WH_PLAYER, WH_PLAYER);
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+}
+
+void Player::nextFrame()
+{
+
 }
