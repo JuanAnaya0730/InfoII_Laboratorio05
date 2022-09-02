@@ -10,6 +10,7 @@ Level::Level(const QString &fileName, QObject *parent) :
     this->loadLevel(fileName);
 
     for(int i=0; i < maze.size(); ++i){ this->addItem(maze[i]); }
+    for(int i=0; i < food.size(); ++i){ this->addItem(food[i]); }
 }
 
 void Level::loadLevel(const QString &fileName)
@@ -28,7 +29,8 @@ void Level::loadLevel(const QString &fileName)
 
     for(int i=0; i < textMap.size(); ++i){
         for(int j=0; j < (int)textMap[i].length(); ++j){
-            if(textMap[i][j] == 'X'){this->maze.append(new Wall(j*WH_WALL, i*WH_WALL)); }
+            if(textMap[i][j] == 'X'){ this->maze.append(new Wall(j*WH_WALL, i*WH_WALL)); }
+            else if(textMap[i][j] == '.'){ this->food.append(new Pill(j*WH_WALL-1, i*WH_WALL-1)); }
         }
     }
 }
