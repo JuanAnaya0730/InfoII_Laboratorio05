@@ -17,12 +17,15 @@ private:
     QList<Wall *> maze;
     QList<Pill *> food;
 
-    Direction dir;
+    Direction futureDirection;
 
     void loadLevel(const QString &fileName);
 
 public:
     explicit Level(const QString &fileName, QObject *parent = nullptr);
+
+    void setPlayerDirection(Direction newDirection);
+    void movePlayer();
 };
 
 #endif // LEVEL_H
