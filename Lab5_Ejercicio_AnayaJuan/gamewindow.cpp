@@ -2,6 +2,6 @@
 
 GameWindow::GameWindow()
 {
-    levelOne = new Level(this);
+    levelOne = new Level("Level1.txt", this);
     this->setScene(levelOne);
 }
