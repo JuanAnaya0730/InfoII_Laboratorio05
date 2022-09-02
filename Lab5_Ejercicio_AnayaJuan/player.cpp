@@ -4,6 +4,7 @@ Player::Player(const int &x, const int &y, Direction d, QObject *parent)
     : QObject{parent}, posX(x), posY(y), direction(d)
 {
     container = new QGraphicsRectItem(0, 0, WH_PLAYER-1, WH_PLAYER-1);
+    stomach = new QGraphicsRectItem(0, 0, 3, 3);
 
     this->updatePos();
 }
@@ -26,6 +27,7 @@ Direction Player::getDirection() const
 void Player::updatePos()
 {
     container->setPos(posX, posY);
+    stomach->setPos(posX+6, posY+6);
 }
 
 QGraphicsRectItem *Player::getContainer() const
@@ -33,9 +35,19 @@ QGraphicsRectItem *Player::getContainer() const
     return container;
 }
 
+QGraphicsRectItem *Player::getStomach() const
+{
+    return stomach;
+}
+
 bool Player::collidingWithWall(const Wall *wall)
 {
     return container->collidesWithItem(wall);
+}
+
+bool Player::collidingWithPill(const Pill *pill)
+{
+    return stomach->collidesWithItem(pill);
 }
 
 void Player::setDirection(Direction newDirection)

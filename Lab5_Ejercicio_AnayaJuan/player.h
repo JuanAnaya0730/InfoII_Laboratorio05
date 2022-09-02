@@ -7,6 +7,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include "wall.h"
+#include "pill.h"
 
 #define WH_PLAYER 16 // Ancho y alto para el contorno del personaje
 #define VEL 2
@@ -21,12 +22,9 @@ private:
     int posY;
     Direction direction;
     QGraphicsRectItem *container;
-
-    QPixmap *sprite;
-    int currentFrame;
+    QGraphicsRectItem *stomach;
 
     void updatePos();
-    void changeSprite();
 
 public:
     explicit Player(const int &x, const int &y, Direction d = Direction::None, QObject *parent = nullptr);
@@ -35,7 +33,9 @@ public:
     int getPosY() const;
     Direction getDirection() const;
     QGraphicsRectItem *getContainer() const;
+    QGraphicsRectItem *getStomach() const;
     bool collidingWithWall(const Wall *wall);
+    bool collidingWithPill(const Pill *pill);
     void setDirection(Direction newDirection);
     void move();
     void moveBack();
