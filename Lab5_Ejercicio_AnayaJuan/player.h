@@ -21,7 +21,7 @@ private:
     void updatePos();
 
 public:
-    explicit Player(const int &x, const int &y, Direction d, QObject *parent = nullptr);
+    explicit Player(const int &x, const int &y, Direction d = Direction::None, QObject *parent = nullptr);
 
     QGraphicsRectItem *getContainer() const;
     void setDirection(Direction newDirection);
