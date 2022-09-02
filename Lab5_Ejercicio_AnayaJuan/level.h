@@ -6,12 +6,14 @@
 #include <QString>
 #include <QList>
 #include "wall.h"
+#include "pill.h"
 
 class Level : public QGraphicsScene
 {
     Q_OBJECT
 private:
     QList<Wall *> maze;
+    QList<Pill *> food;
 
     void loadLevel(const QString &fileName);
 
