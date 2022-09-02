@@ -11,14 +11,15 @@ Level::Level(const QString &fileName, QObject *parent) :
 
     /* Aqui se inicializan los atributos */
     pacman = new Player(WH_WALL*14, WH_WALL*17);
-    dir = Direction::Left;
+    autoMove = new QTimer();
+    futureDirection = Direction::Left;
 
     /* Aqui se añaden los muros pacman y las pildora a la escena */
     for(int i=0; i < maze.size(); ++i){ this->addItem(maze[i]); }
     for(int i=0; i < food.size(); ++i){ this->addItem(food[i]); }
     this->addItem(pacman->getContainer());
 
-    pacman->setDirection(dir);
+    connect(autoMove, &QTimer::timeout, this, &Level::movePlayer);
 }
 
 void Level::loadLevel(const QString &fileName)
@@ -39,6 +40,25 @@ void Level::loadLevel(const QString &fileName)
         for(int j=0; j < (int)textMap[i].length(); ++j){
             if(textMap[i][j] == 'X'){ this->maze.append(new Wall(j*WH_WALL, i*WH_WALL)); }
             else if(textMap[i][j] == '.'){ this->food.append(new Pill(j*WH_WALL-1, i*WH_WALL-1)); }
+        }
+    }
+}
+
+void Level::setPlayerDirection(Direction newDirection)
+{
+    futureDirection = newDirection;
+    pacman->setDirection(futureDirection);
+    autoMove->start(50);
+}
+
+void Level::movePlayer()
+{
+    pacman->move();
+    for(int i=0; i < maze.size(); ++i){
+        if(pacman->collidingWithWall(maze[i])){
+            pacman->moveBack();
+            autoMove->stop();
+            break;
         }
     }
 }
