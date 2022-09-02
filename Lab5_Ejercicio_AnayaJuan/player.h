@@ -15,6 +15,8 @@ private:
 public:
     explicit Player(QObject *parent = nullptr);
 
+    QGraphicsRectItem *getContainer() const;
+
 signals:
 
 };
