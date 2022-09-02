@@ -9,7 +9,10 @@ Player::Player(const int &x, const int &y, Direction d, QObject *parent)
 
 void Player::updatePos()
 {
-    container->setPos(posX, posY);
+    if(direction == Direction::Up){ posY -= VEL; }
+    else if(direction == Direction::Down){ posY += VEL; }
+    else if(direction == Direction::Left){ posX -= VEL; }
+    else if(direction == Direction::Right){ posX += VEL; }
 }
 
 QGraphicsRectItem *Player::getContainer() const
@@ -24,10 +27,7 @@ void Player::setDirection(Direction newDirection)
 
 void Player::move()
 {
-    if(direction == Direction::Up){ posY -= VEL; }
-    else if(direction == Direction::Down){ posY += VEL; }
-    else if(direction == Direction::Left){ posX -= VEL; }
-    else if(direction == Direction::Right){ posX += VEL; }
-
     this->updatePos();
+
+    container->setPos(posX, posY);
 }
