@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QGraphicsRectItem>
+#include <QGraphicsItem>
+#include <QPainter>
 #include "wall.h"
 
 #define WH_PLAYER 16 // Ancho y alto para el contorno del personaje
@@ -10,7 +12,7 @@
 
 enum class Direction{None, Up, Down, Left, Right}; // Direccion en la que se movera el personaje
 
-class Player : public QObject
+class Player : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 private:
@@ -32,6 +34,9 @@ public:
     void setDirection(Direction newDirection);
     void move();
     void moveBack();
+
+    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 
 #endif // PLAYER_H
