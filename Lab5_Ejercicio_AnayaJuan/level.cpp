@@ -10,17 +10,20 @@ Level::Level(const QString &fileName, QObject *parent) :
     this->loadLevel(fileName);
 
     /* Aqui se inicializan los atributos */
-    pacman = new Player(WH_WALL*14, WH_WALL*17);
+    pacman = new Player(WH_WALL*17, WH_WALL*17);
     score = new Score(0, WH_WALL*32);
     timer = new Timer(WH_WALL*22, WH_WALL*32);
     autoMove = new QTimer();
     futureDirection = Direction::Left;
 
+    msgBox.setWindowTitle("Juego terminado");
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+
+    /* Aqui se añaden los graficos */
     this->setBackgroundBrush(QColor(0,0,0));
     this->addPixmap(QPixmap(":/images/maze.png"));
-
-    /* Aqui se añaden los muros pacman y las pildora a la escena */
-    //for(int i=0; i < maze.size(); ++i){ this->addItem(maze[i]); }
     for(int i=0; i < food.size(); ++i){ this->addItem(food[i]); }
     this->addItem(pacman);
     this->addWidget(score);
@@ -30,7 +33,7 @@ Level::Level(const QString &fileName, QObject *parent) :
     connect(autoMove, &QTimer::timeout, this, &Level::movePlayer);
 
     timer->start();
-    autoMove->start(15);
+    autoMove->start(20);
 }
 
 void Level::loadLevel(const QString &fileName)
@@ -82,6 +85,7 @@ void Level::movePlayer()
             this->removeItem(food[i]);
             food.removeAt(i);
             score->increase();
+            if(food.isEmpty()){ this->gameWon(); }
         }
     }
 
@@ -97,8 +101,21 @@ void Level::movePlayer()
     }
 }
 
+void Level::gameWon()
+{
+    autoMove->stop();
+    timer->stop();
+    msgBox.setText("¡Ganaste wacho!\nTiempo final: " + QString::number(60-(timer->getTime().toString("ss")).toInt()));
+    if (QMessageBox::Ok == msgBox.exec()){
+        exit(1);
+    }
+}
+
 void Level::gameOver()
 {
     autoMove->stop();
-    qDebug() << "perdidte pedrin";
+    msgBox.setText("¡Perdiste! Pai eres un poquito manco\nPuntaje final: " + QString::number(score->getScore()));
+    if (QMessageBox::Ok == msgBox.exec()){
+        exit(1);
+    }
 }

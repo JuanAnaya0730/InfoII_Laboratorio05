@@ -19,6 +19,7 @@ public:
     explicit Timer(const int &x, const int &y);
     void start();
     void stop();
+    const QTime &getTime() const;
 
 signals:
     void ended();

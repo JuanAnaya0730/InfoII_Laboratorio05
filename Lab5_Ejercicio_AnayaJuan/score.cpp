@@ -14,6 +14,11 @@ void Score::updateText()
     this->setText("SCORE\n" + QString::number(score));
 }
 
+const int &Score::getScore() const
+{
+    return score;
+}
+
 void Score::increase()
 {
     score += 10;

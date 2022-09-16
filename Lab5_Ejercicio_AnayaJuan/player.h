@@ -10,7 +10,7 @@
 #include "pill.h"
 
 #define WH_PLAYER 16 // Ancho y alto para el contorno del personaje
-#define VEL 1
+#define VEL 2
 
 enum class Direction{None, Up, Down, Left, Right}; // Direccion en la que se movera el personaje
 

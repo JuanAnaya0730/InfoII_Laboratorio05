@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QGraphicsScene>
+#include <QMessageBox>
 #include <QString>
 #include <QList>
 #include <QTimer>
@@ -25,8 +26,11 @@ private:
     QTimer *autoMove;
     Direction futureDirection;
 
+    QMessageBox msgBox;
+
     void loadLevel(const QString &fileName);
-    bool canPlayerChangeDirection();    
+    bool canPlayerChangeDirection();
+    void gameWon();
 
 public:
     explicit Level(const QString &fileName, QObject *parent = nullptr);

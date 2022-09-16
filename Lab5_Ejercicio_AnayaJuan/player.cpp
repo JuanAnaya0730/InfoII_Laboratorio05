@@ -49,7 +49,6 @@ void Player::changeSprite()
     else if(direction == Direction::Down){ *sprite = QPixmap(":/images/down.png"); }
     else if(direction == Direction::Left){ *sprite = QPixmap(":/images/left.png"); }
     else if(direction == Direction::Right){ *sprite = QPixmap(":/images/right.png"); }
-    else{ *sprite = QPixmap(":/images/left.png"); }
 }
 
 QGraphicsRectItem *Player::getContainer() const
@@ -64,8 +63,7 @@ QGraphicsRectItem *Player::getStomach() const
 
 bool Player::collidingWithWall(const Wall *wall)
 {
-    return container->collidesWithItem(wall);
-    //return this->collidesWithItem(wall);
+    return this->collidesWithItem(wall);
 }
 
 bool Player::collidingWithPill(const Pill *pill)
@@ -97,13 +95,13 @@ void Player::moveBack()
     else if(direction == Direction::Right){ posX -= VEL; }
 
     direction = Direction::None;
-    currentFrame = 0;
+    currentFrame = 16;
     this->updatePos();
 }
 
 void Player::nextFrame()
 {
-    currentFrame += WH_PLAYER;
+    if(direction != Direction::None){ currentFrame += WH_PLAYER; }
     if(currentFrame >= WH_PLAYER * 4){ currentFrame = 0; }
     this->update(0, 0, WH_PLAYER, WH_PLAYER);
 }

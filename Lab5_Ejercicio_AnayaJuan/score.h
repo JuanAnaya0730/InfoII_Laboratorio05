@@ -14,6 +14,7 @@ private:
 public:
     Score(const int &x, const int &y);
 
+    const int &getScore() const;
     void increase();
 };
 

@@ -29,6 +29,11 @@ void Timer::stop()
     timer->stop();
 }
 
+const QTime &Timer::getTime() const
+{
+    return time;
+}
+
 void Timer::updateTime()
 {
     time = time.addSecs(-1);
