@@ -12,6 +12,7 @@ QRectF Wall::boundingRect() const
 
 void Wall::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    painter->setPen(QColor(0,0,255));
     painter->drawRect(0, 0, WH_WALL-1, WH_WALL-1);
     Q_UNUSED(option);
     Q_UNUSED(widget);

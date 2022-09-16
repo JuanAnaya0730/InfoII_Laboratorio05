@@ -14,6 +14,8 @@ SOURCES += \
     main.cpp \
     pill.cpp \
     player.cpp \
+    score.cpp \
+    timer.cpp \
     wall.cpp
 
 HEADERS += \
@@ -21,6 +23,8 @@ HEADERS += \
     level.h \
     pill.h \
     player.h \
+    score.h \
+    timer.h \
     wall.h
 
 # Default rules for deployment.

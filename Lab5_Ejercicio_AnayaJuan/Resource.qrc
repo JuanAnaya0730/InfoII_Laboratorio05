@@ -4,5 +4,6 @@
         <file>images/left.png</file>
         <file>images/right.png</file>
         <file>images/up.png</file>
+        <file>images/maze.png</file>
     </qresource>
 </RCC>

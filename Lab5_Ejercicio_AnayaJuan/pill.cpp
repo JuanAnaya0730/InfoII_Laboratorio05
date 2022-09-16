@@ -12,6 +12,7 @@ QRectF Pill::boundingRect() const
 
 void Pill::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    painter->setPen(QPen(QColor(255, 255, 0)));
     painter->drawRect(0, 0, WH_PILL-1, WH_PILL-1);
     Q_UNUSED(option);
     Q_UNUSED(widget);

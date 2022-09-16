@@ -9,12 +9,16 @@
 #include "wall.h"
 #include "pill.h"
 #include "player.h"
+#include "score.h"
+#include "timer.h"
 
 class Level : public QGraphicsScene
 {
     Q_OBJECT
 private:
     Player *pacman;
+    Score *score;
+    Timer *timer;
     QList<Wall *> maze;
     QList<Pill *> food;
 
@@ -22,7 +26,7 @@ private:
     Direction futureDirection;
 
     void loadLevel(const QString &fileName);
-    bool canPlayerChangeDirection();
+    bool canPlayerChangeDirection();    
 
 public:
     explicit Level(const QString &fileName, QObject *parent = nullptr);
@@ -31,6 +35,7 @@ public:
 
 public slots:
     void movePlayer();
+    void gameOver();
 };
 
 #endif // LEVEL_H

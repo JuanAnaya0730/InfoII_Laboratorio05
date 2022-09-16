@@ -9,14 +9,14 @@ X .XXX .X .XXXXXXX .X .XXX .X
 X .    .X .   X    .X .    .X
 X ......X ....X ....X ......X
 XXXXXX .XXXX .X .XXXX .XXXXXX
-XXXXXX .X           X .XXXXXX
-XXXXXX .X           X .XXXXXX
+     X .X           X .X     
+     X .X           X .X     
 XXXXXX .X  XXXXXXX  X .XXXXXX
        .   XXXXXXX    .      
        .   XXXXXXX    .      
 XXXXXX .X  XXXXXXX  X .XXXXXX
-XXXXXX .X           X .XXXXXX
-XXXXXX .X           X .XXXXXX
+     X .X           X .X     
+     X .X           X .X     
 XXXXXX .X  XXXXXXX  X .XXXXXX
 X      .      X       .     X
 X ............X ............X
